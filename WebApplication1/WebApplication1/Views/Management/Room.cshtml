@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Room>
+
+@{
+    Layout = null;
+
+    Pager pager = new Pager();
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+    }
+}
+
+
+<h1 class="text-center mt-5 border text-uppercase" id="title"> Room List </h1>
+
+<div>
+    @await Component.InvokeAsync("RoomTypeName")
+</div>
+
+<div id="roomListContainer">
+<table class="table table-hover table-responsive">
+
+    <thead class="thead-dark">
+        <tr class="text-center">
+            <th>Room ID</th>
+            <th>Room Type</th>
+            <th>Floor</th>
+            <th>Room Number</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Service</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Id</td>
+                <td>@r.RoomTypeName</td>
+                <td>@r.Floor</td>
+                <td>@r.RoomNumber</td>
+                <td>@r.Price</td>
+                <td>@r.Description</td>
+                <td>@r.Service</td>
+                <td>@r.IsActive</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+<div class="container" id="paging">
+        <ul class="pagination">
+            @if (pager.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link load-page" asp-route-page="1">First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link load-page" asp-route-pg="@(pager.CurrentPage -1)">Previous</a>
+                </li>
+            }
+            @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+            {
+                <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                    <a class="page-link load-page" asp-route-pg="@pge">@pge</a>
+                </li>
+            }
+            @if (pager.CurrentPage < pager.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link load-page" asp-route-pg="@(pager.CurrentPage + 1)">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link load-page" asp-route-pg="@(pager.TotalPages)">Last</a>
+                </li>
+            }
+        </ul>
+</div>
+
+
+
+@section Scripts {
+    <script>
+            $("li").click(function (e) {
+                var page = $(this).data("page");
+                var roomTypeName = $(this).attr("id");
+                var temp = document.getElementById("paging");
+                $.ajax({
+                    url: "/Management/RoomByName",
+                    data: { name: roomTypeName},
+                    success: function (data) {
+                        $("div#roomListContainer").html(data);
+                        temp.style.display = "none";
+                    }
+                });
+
+            });
+
+    </script>
+}
+

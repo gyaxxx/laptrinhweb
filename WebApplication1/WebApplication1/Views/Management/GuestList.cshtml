@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Guest>
+
+@{
+    Layout = null;
+    Pager pager = new Pager();
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+    }
+}
+
+<h1 class="text-center mt-5 border text-uppercase"> Guest</h1>
+
+<div>
+    @if (ViewBag.recordCount == 0)
+    {
+        <h1 class="mt-3 text-center">No records have been made!</h1>
+    }
+    else
+    {
+        <form asp-controller="Management" asp-action="GuestList">
+            <p>
+                Title: <input type="text" name="SearchString" />
+                <input type="submit" value="Filter">
+            </p>
+        </form>
+        <table class="table table-hover table-responsive">
+
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th>ID</th>
+                    <th style="width:25%">First Name</th>
+                    <th style="width:25%">Last Name</th>
+                    <th style="width:20%">Email</th>
+                    <th style="width:20%">Phone Number</th>
+                    <th style="width:10%">Function</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var g in Model)
+                {
+                    <tr class="text-center">
+                        <td>@g.ID</td>
+                        <td>@g.FirstName</td>
+                        <td>@g.LastName</td>
+                        <td>@g.Email</td>
+                        <td>@g.PhoneNumber</td>
+                        <td class="">
+                            <a asp-action="Edit" asp-route-id="@g.ID"><i class="fa-regular fa-pen-to-square"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="container" id="paging">
+            <ul class="pagination">
+                @if (pager.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link load-page" asp-route-page="1">First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link load-page" asp-route-pg="@(pager.CurrentPage -1)">Previous</a>
+                    </li>
+                }
+                @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+                {
+                    <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                        <a class="page-link load-page" asp-route-pg="@pge">@pge</a>
+                    </li>
+                }
+                @if (pager.CurrentPage < pager.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link load-page" asp-route-pg="@(pager.CurrentPage + 1)">Next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link load-page" asp-route-pg="@(pager.TotalPages)">Last</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>

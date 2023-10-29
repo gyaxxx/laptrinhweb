@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Moonlight";
+    Layout = "~/Views/Shared/Main.cshtml";
+}
+
+@model Staff
+
+<style>
+    .loginContainer {
+        margin-top: 30px;
+        height: 500px;
+        background-color: #3D2C8D;
+        border-radius: 15px;
+        background-size: cover;
+        background-position: -810%;
+        background-image: url('../img/peakpx-removebg.png')
+    }
+
+    .loginForm {
+        margin-top: 30px;
+        margin-left: 50px;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-image: url("../../wwwroot/img/peakpx-removebg.png");
+        opacity: 0.95;
+        margin-bottom: 30px;
+    }
+
+    .loginText {
+        color: white;
+        padding: 100px;
+    }
+
+</style>
+
+<div class="loginContainer container d-flex">
+        <div class="loginForm col-4 container ">
+            <h2 class="text-center mt-5">Login</h2>
+        <div asp-validation-summary="All" class="text-danger"></div>
+            <form asp-action="Login" asp-controller="Hotel" method="post">
+                <label asp-for="Username">Username:</label>
+                <input type="text" class="form-control mb-4" asp-for="Username">
+                <span asp-validation-for="Username" class="text-danger"></span>
+                <br />
+                <label asp-for="Password">Password:</label>
+                <input type="password" class="form-control mb-4" asp-for="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <button class="form-control btn-danger">Login</button>
+                <hr>
+                <a href="" class="ml-">Forget your password ?</a>
+            </form>
+        </div>
+        <div class="loginText text-center col-6">
+            <h1>Moonlight Hotel</h1>
+            <p>Welcome back</p>
+    </div>
+   
+</div>

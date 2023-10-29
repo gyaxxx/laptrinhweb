@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Moonlight";
+    Layout = "~/Views/Shared/Main.cshtml";
+}
+
+<style>
+        .ad a {
+        background-image: linear-gradient( to right, #C996CC, #C996CC 50%, #fff 50% );
+        background-size: 200% 100%;
+        background-position: -100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+        .ad a:hover {
+            background-position: 0;
+        }
+
+</style>
+
+
+<div class="ad row container-fluid">
+    <div class="left-ad col-xl-6 col-md-6 col-sm-6">
+        <h2>About us</h2>
+        <p>
+            Moonlight Nha Trang Hotel is an ideal destination, located at the heart of one of the most beautiful coastal city, Nha Trang. Just 5 minutes stepping down to enjoy a stunning scenery of the beach.
+            The 13-storey building hotel offers you panoramic views, our 54 well-equipped, spacious rooms will make your stay a perfect one.
+            Whenever you are at Moonlight Nha Trang Hotel for holiday or business, you will be kindly welcomed by our professional, friendly & hospitable staffs.
+        </p>
+        <a style="float: right; color: white" asp-action="Book" asp-controller="Hotel">Book now</a>
+    </div>
+
+    <div class="right-ad col-6 col-md-6 col-sm-6 ">
+        <img src="~/img/photo-1611892440504-42a792e24d32.jpg" alt="" class="img-fluid">
+    </div>
+</div>
+
+<div class="function container-fluid row">
+    <div class="f1 col-6">
+        <img src="~/img/697A3225-scaled.jpg" alt="">
+        <div class="centered">
+            <p>Room & Suites</p>
+        </div>
+
+    </div>
+    <div class="f2 col-6">
+        <img src="~/img/697A3343-scaled.jpg" alt="img-fluid">
+        <div class="centered">
+            <p>Dining</p>
+        </div>
+    </div>
+    <div class="f3 col-6">
+        <img src="~/img/697A3161-scaled.jpg" alt="">
+        <div class="centered">
+            <p class="">Services & Amenities</p>
+        </div>
+    </div>
+    <div class="f4 col-6">
+        <img src="~/img/697A3396-scaled.jpg" alt="">
+        <div class="centered">
+            <p>Meetings & Events</p>
+        </div>
+    </div>
+

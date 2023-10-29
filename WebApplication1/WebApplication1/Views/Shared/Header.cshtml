@@ -1,0 +1,36 @@
+﻿
+<style>
+    .header a {
+        background-image: linear-gradient(
+            to right,
+            #C996CC,
+            #C996CC 50%, #1C0C5B 50% );
+        background-size: 200% 100%;
+        background-position: -100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    .header a:hover {
+        background-position: 0;
+    }
+
+</style>
+
+
+<div class="header container-fluid" id="navbar">
+    <h1 class="col-xl-2 col-md-2 ">Moonlight</h1>
+    <div class="header-link col-xl-8 col-md-8">
+        <a asp-action="Index" asp-controller="Hotel">Home</a>
+        <a href="#">Rooms</a>
+        <a href="#">Gallery</a>
+        <a href="#">News</a>
+        <a asp-controller="Hotel" asp-action="Book">Book now</a>
+
+    </div>
+    <div class="col-xl-2 col-md-2 text-center" style="padding: 10px">
+        <a asp-controller="Hotel" asp-action="Login" style="color:#1C0C5B">Login</a>
+    </div>
+</div>

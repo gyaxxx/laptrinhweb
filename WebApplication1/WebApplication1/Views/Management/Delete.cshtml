@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Management/Main.cshtml";
+}
+
+@model Reservations
+<div class=" mx-2 ms-2">
+
+    <h1>Delete</h1>
+    <h3>Are you sure you want to delete this?</h3>
+    <br />
+    <h4>Resevation</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.ID)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GuestID)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.GuestID)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RoomID)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.RoomID)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CheckInDate)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.CheckInDate)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CheckOutDate)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.CheckOutDate)
+        </dt>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="@Model.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Reservation" class="btn btn-success">Back to list</a>
+
+    </form>
+</div>

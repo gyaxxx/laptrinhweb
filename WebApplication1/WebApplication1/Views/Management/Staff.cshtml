@@ -1,0 +1,111 @@
+﻿@{
+    Layout = null;
+}
+    <style>
+        .nav-bar {
+            align-items: center;
+            padding: 10px;
+            color: black;
+            border-bottom: 2px solid gray;
+        }
+
+            .nav-bar h1 {
+                margin-left: 20px;
+            }
+
+        .main-left {
+            background-color: gray;
+            border-bottom-right-radius: 10px;
+            height: 100px;
+        }
+
+            .main-left a {
+                text-decoration: none;
+                color: white;
+            }
+
+        .timebox {
+            font-size: 30px;
+            background-color: #3D2C8D;
+            color: white;
+        }
+
+        .card {
+            font-size: 20px;
+        }
+
+        .crd p {
+            padding: 100px;
+        }
+    </style>
+
+    <div class="main row">
+    </div>
+    <div class="timebox">
+        <p id="time" class="text-center"></p>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="card-title mb-5"><h3>Rooms</h3></div>
+                    <p class="card-text">
+                        Rooms total: @ViewBag.totalRoom
+                        <br />
+                        Rooms available: @ViewBag.RoomActiveCount
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 mt-4">
+            <div class="card text-center">
+                <div class="card-body crd">
+                    <div class="card-title"><h3>In-house guests</h3></div>
+                    <p style="font-size:40px">@ViewBag.guestCount</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 mt-4">
+            <div class="card text-center">
+                <div class="card-body crd">
+                    <div class="card-title"><h3>Income</h3></div>
+                    <p style="font-size:30px">@ViewBag.Income VND</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 mt-4">
+            <div class="card text-center">
+                <div class="card-body crd">
+                    <div class="card-title"><h3>Res count</h3></div>
+                    <p style="font-size:40px">@ViewBag.resCount</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+    function updateClock() {
+        const currentDate = new Date();
+
+        const dayOfWeek = days[currentDate.getDay()];
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth() + 1;
+        const day = currentDate.getDate();
+        const hours = currentDate.getHours();
+        const minutes = currentDate.getMinutes();
+        const seconds = currentDate.getSeconds();
+
+        document.getElementById("time").innerHTML = `${dayOfWeek} ${day}/${month}/${year}  ${hours}:${minutes}:${seconds}`;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+</script>

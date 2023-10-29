@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Room>
+
+<table class="table table-hover table-responsive">
+
+    <thead class="thead-dark">
+        <tr class="text-center">
+            <th>Room ID</th>
+            <th>Room Type</th>
+            <th>Floor</th>
+            <th>Room Number</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Service</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Id</td>
+                <td>@r.RoomTypeName</td>
+                <td>@r.Floor</td>
+                <td>@r.RoomNumber</td>
+                <td>@r.Price</td>
+                <td>@r.Description</td>
+                <td>@r.Service</td>
+                <td>@r.IsActive</td>
+            </tr>
+        }
+    </tbody>
+</table>
